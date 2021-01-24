@@ -1,6 +1,6 @@
 package de.vkb.tdd.serivce;
 
-import de.vkb.tdd.validation.SchadenNrValidation;
+import de.vkb.tdd.validation.SchadenNrValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +10,12 @@ import java.util.List;
 @Service
 public class SchadenNrService {
 
-    private SchadenNrValidation schadenValidation;
+    private SchadenNrValidator validator;
     private List<String> schadenDb = new ArrayList<>();
 
     @Autowired
-    public SchadenNrService(SchadenNrValidation schadenValidation) {
-        this.schadenValidation = schadenValidation;
+    public SchadenNrService(SchadenNrValidator validator) {
+        this.validator = validator;
         schadenDb.add("TLM20000001");
         schadenDb.add("TLM20000002");
         schadenDb.add("TLM20000003");
@@ -23,7 +23,7 @@ public class SchadenNrService {
 
     public boolean isSchadenNrExist(String schadenNr) {
 
-        boolean validation = schadenValidation.validateSchadenNr(schadenNr);
+        boolean validation = validator.validateSchadenNr(schadenNr);
 
         if (validation)
             return schadenDb.contains(schadenNr);

@@ -3,7 +3,7 @@ package de.vkb.tdd.validation;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SchadenNrValidation {
+public class SchadenNrValidator {
 
     public boolean validateSchadenNr(String schadenNr) {
 
